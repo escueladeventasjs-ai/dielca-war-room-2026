@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DIELCA War Room Game</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">JetSelling® Game Lab</p>
+        <h1>DIELCA War Room</h1>
+      </div>
+      <button class="icon-btn" onclick="openScreen('score')">🏆</button>
+    </header>
+
+    <main>
+      <section id="home" class="screen active">
+        <div class="hero-card">
+          <div class="pulse">⚡</div>
+          <h2>Sal de la subasta</h2>
+          <p>Juego práctico para detectar oportunidades, abrir conversación y defender valor.</p>
+        </div>
+
+        <div class="panel">
+          <label>Elige tu equipo</label>
+          <div class="team-grid">
+            <button onclick="setTeam('Constructora')">🏗 Constructora</button>
+            <button onclick="setTeam('Instaladores')">🔌 Instaladores</button>
+            <button onclick="setTeam('Industria')">🏭 Industria</button>
+            <button onclick="setTeam('Ingeniería')">📐 Ingeniería</button>
+          </div>
+          <p class="team-status" id="teamStatus">Equipo no seleccionado</p>
+        </div>
+
+        <button class="primary big" onclick="startGame()">Empezar misión</button>
+      </section>
+
+      <section id="mission1" class="screen">
+        <div class="mission-head">
+          <span>Misión 1/4</span>
+          <h2>Radar de Oportunidades</h2>
+          <p>Detecta señales antes de que el cliente pida precio.</p>
+        </div>
+
+        <div class="progress"><div id="bar1"></div></div>
+
+        <div class="card">
+          <h3>1. Elige cliente objetivo</h3>
+          <div class="chips single" data-target="cliente">
+            <button>Constructora</button><button>Instalador</button><button>Industria</button><button>Ingeniería</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>2. Señales de oportunidad</h3>
+          <p class="hint">Toca 3 o más.</p>
+          <div class="chips multi" data-target="senales">
+            <button>Nueva obra</button><button>Reforma</button><button>Licitación</button><button>Ampliación</button>
+            <button>Retrasos de proveedor</button><button>Proyecto FV</button><button>Averías frecuentes</button><button>Nueva nave</button>
+            <button>Cambio responsable</button><button>Mantenimiento</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>3. Fuentes para llegar antes</h3>
+          <p class="hint">Toca 2 o más.</p>
+          <div class="chips multi" data-target="fuentes">
+            <button>LinkedIn</button><button>Visita a obra</button><button>Clientes actuales</button><button>Prensa local</button>
+            <button>Ingenierías</button><button>Instaladores</button><button>Licitaciones</button><button>Arquitectos</button>
+          </div>
+        </div>
+
+        <button class="primary big" onclick="scoreMission1()">Validar radar</button>
+      </section>
+
+      <section id="mission2" class="screen">
+        <div class="mission-head">
+          <span>Misión 2/4</span>
+          <h2>Hipótesis JetSelling®</h2>
+          <p>Construye una apertura sin hablar de producto.</p>
+        </div>
+
+        <div class="formula">
+          <div>Situación</div><span>→</span><div>Riesgo</div><span>→</span><div>Impacto</div><span>→</span><div>Pregunta</div>
+        </div>
+
+        <div class="card">
+          <h3>Situación observada</h3>
+          <div class="chips single" data-target="situacion">
+            <button>Compras reactivas</button><button>Obra con plazos ajustados</button><button>Falta de previsión</button><button>Proveedor saturado</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Riesgo posible</h3>
+          <div class="chips single" data-target="riesgo">
+            <button>Paradas</button><button>Retrasos</button><button>Sobrecostes</button><button>Urgencias</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Impacto probable</h3>
+          <div class="chips single" data-target="impacto">
+            <button>Plazo de obra</button><button>Productividad</button><button>Margen</button><button>Reputación</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Pregunta de apertura</h3>
+          <div class="chips single" data-target="pregunta">
+            <button>¿Cómo lo estáis anticipando?</button>
+            <button>¿Qué impacto tendría un retraso?</button>
+            <button>¿Qué proveedor os da más seguridad?</button>
+            <button>¿Cómo evitáis compras urgentes?</button>
+          </div>
+        </div>
+
+        <button class="primary big" onclick="buildHypothesis()">Crear apertura</button>
+        <div class="result-card" id="hypothesisResult"></div>
+        <button class="secondary" onclick="openScreen('mission3')">Siguiente misión</button>
+      </section>
+
+      <section id="mission3" class="screen">
+        <div class="mission-head red">
+          <span>Misión 3/4</span>
+          <h2>Tribunal del Precio</h2>
+          <p>El cliente presiona. No puedes tocar el precio.</p>
+        </div>
+
+        <div class="client-bubble">“La competencia me lo deja un 15% más barato.”</div>
+
+        <div class="card">
+          <h3>1. Reconocer</h3>
+          <div class="chips single quiz" data-target="reconocer" data-good="Entiendo que el precio sea importante">
+            <button>Eso no es comparable</button>
+            <button>Entiendo que el precio sea importante</button>
+            <button>Nosotros somos mejores</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>2. Profundizar</h3>
+          <div class="chips single quiz" data-target="profundizar" data-good="¿Estamos comparando el mismo alcance?">
+            <button>¿Estamos comparando el mismo alcance?</button>
+            <button>¿Cuánto te tengo que bajar?</button>
+            <button>¿Quién es la competencia?</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>3. Neutralizar</h3>
+          <div class="chips single quiz" data-target="neutralizar" data-good="Si resolvemos esto, ¿hay algo más?">
+            <button>Entonces no hay nada que hacer</button>
+            <button>Si resolvemos esto, ¿hay algo más?</button>
+            <button>Te lo dejo igual y cerramos</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>4. Resolver</h3>
+          <div class="chips single quiz" data-target="resolver" data-good="Reencuadrar a coste, riesgo e impacto">
+            <button>Reencuadrar a coste, riesgo e impacto</button>
+            <button>Igualar precio</button>
+            <button>Atacar a la competencia</button>
+          </div>
+        </div>
+
+        <button class="primary big" onclick="scoreTribunal()">Veredicto</button>
+        <div class="result-card" id="tribunalResult"></div>
+      </section>
+
+      <section id="mission4" class="screen">
+        <div class="mission-head">
+          <span>Misión 4/4</span>
+          <h2>Cierre de Compromiso</h2>
+          <p>No cierres conversación. Cierra avance.</p>
+        </div>
+
+        <div class="card">
+          <h3>Elige el mejor compromiso</h3>
+          <div class="chips single" data-target="compromiso">
+            <button>Próxima reunión con decisor</button>
+            <button>Validación técnica</button>
+            <button>Fecha de decisión</button>
+            <button>Revisión conjunta de oferta</button>
+            <button>Prueba / pedido piloto</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Frase final</h3>
+          <div class="chips single" data-target="fraseFinal">
+            <button>¿Cuál sería el siguiente paso lógico?</button>
+            <button>¿Lo cerramos ahora?</button>
+            <button>Te llamo otro día</button>
+          </div>
+        </div>
+
+        <button class="primary big" onclick="finishGame()">Finalizar partida</button>
+        <div class="result-card" id="finalResult"></div>
+      </section>
+
+      <section id="score" class="screen">
+        <div class="mission-head">
+          <span>Panel de mando</span>
+          <h2>Ranking War Room</h2>
+          <p>Puntuación local de esta partida.</p>
+        </div>
+
+        <div class="score-big" id="scoreBig">0</div>
+        <p class="rank-label" id="rankLabel">Selecciona equipo y juega.</p>
+
+        <div class="summary-box" id="summaryBox"></div>
+
+        <button class="primary big" onclick="copySummary()">Copiar resumen</button>
+        <button class="secondary" onclick="resetGame()">Reiniciar</button>
+        <button class="secondary" onclick="openScreen('home')">Inicio</button>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap');
+:root{--navy:#071c33;--blue:#0867c7;--cyan:#00b8c8;--paper:#fff;--bg:#edf4fa;--ink:#17202a;--muted:#667085;--red:#c1121f;--green:#039855;--gold:#f59e0b}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at top,#dff8fb,#edf4fa 35%,#e8eef5);color:var(--ink)}
+.app-shell{max-width:520px;margin:0 auto;min-height:100vh;background:#f7fbff;box-shadow:0 0 60px rgba(7,28,51,.12)}
+.topbar{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,var(--navy),var(--blue));color:white;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+.eyebrow{margin:0;text-transform:uppercase;letter-spacing:.14em;font-size:10px;font-weight:900;color:#8df2ff}
+h1{font-size:20px;margin:2px 0 0}.icon-btn{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:white;border-radius:14px;font-size:18px;padding:10px}
+.screen{display:none;padding:18px}.screen.active{display:block}
+.hero-card{background:linear-gradient(135deg,#071c33,#0b65b9 70%,#00b8c8);color:white;border-radius:28px;padding:26px;margin:10px 0 16px;box-shadow:0 18px 35px rgba(7,28,51,.25)}
+.hero-card h2{font-size:36px;line-height:.98;margin:8px 0}.hero-card p{color:#ddf8fb}.pulse{width:58px;height:58px;border-radius:20px;background:rgba(255,255,255,.15);display:grid;place-items:center;font-size:30px;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+.panel,.card,.result-card{background:var(--paper);border:1px solid #d9e6f2;border-radius:24px;padding:18px;margin:14px 0;box-shadow:0 12px 28px rgba(7,28,51,.08)}
+label{font-weight:900;color:var(--navy);display:block;margin-bottom:8px}select,input{width:100%;border:1px solid #cbd8e6;border-radius:16px;padding:14px;font:inherit;background:#fbfdff}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.team-grid button,.chips button{border:1px solid #d6e3ef;background:#fff;border-radius:18px;padding:14px 10px;font-weight:900;color:var(--navy);min-height:54px}
+.team-grid button.active,.chips button.active{background:linear-gradient(135deg,var(--blue),var(--cyan));color:white;border-color:transparent;box-shadow:0 10px 20px rgba(8,103,199,.22)}
+.team-status{color:var(--muted);font-weight:800}.primary,.secondary{width:100%;border:0;border-radius:18px;padding:16px;font-weight:900;font-size:16px;margin:10px 0}.primary{background:linear-gradient(135deg,var(--blue),var(--cyan));color:white}.secondary{background:#e8f0f8;color:var(--navy)}.big{font-size:18px;padding:18px}
+.mission-head{background:linear-gradient(135deg,var(--navy),var(--blue));color:white;border-radius:26px;padding:20px;margin-bottom:14px}.mission-head.red{background:linear-gradient(135deg,#3a0710,var(--red))}
+.mission-head span{text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:#99f4ff;font-weight:900}.mission-head h2{font-size:30px;line-height:1;margin:8px 0}.mission-head p{color:#e0f4ff;margin:0}
+.progress{height:10px;background:#d9e6f2;border-radius:99px;overflow:hidden;margin:10px 0 16px}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:.3s}
+.card h3{margin:0 0 8px;font-size:20px;color:var(--navy)}.hint{margin:0 0 12px;color:var(--muted);font-size:13px;font-weight:800}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}.chips button{font-size:13px}
+.formula{display:grid;grid-template-columns:1fr 20px 1fr 20px 1fr 20px 1fr;gap:6px;align-items:center;margin:12px 0}.formula div{background:white;border-radius:16px;padding:10px;text-align:center;font-size:11px;font-weight:900;color:var(--navy);border:1px solid #d9e6f2}.formula span{text-align:center;font-weight:900;color:var(--blue)}
+.client-bubble{background:#fff3cd;border:1px solid #ffd88a;border-left:7px solid var(--gold);border-radius:22px;padding:18px;font-weight:900;font-size:19px;line-height:1.2;margin:14px 0;color:#4d3200}
+.result-card{display:none}.result-card.active{display:block}.result-card strong{color:var(--blue)}
+.score-big{font-size:96px;font-weight:900;text-align:center;color:var(--blue);line-height:1;margin:25px 0 0}.rank-label{text-align:center;font-weight:900;color:var(--navy)}.summary-box{white-space:pre-wrap;background:#071c33;color:#e9fbff;border-radius:20px;padding:18px;font-size:13px;line-height:1.45}
+.good{background:#ecfdf3!important;border-color:#abefc6!important;color:#027a48!important}.bad{background:#fff1f3!important;border-color:#fecdd3!important;color:#b42318!important}
+@media(max-width:420px){.chips{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr}.hero-card h2{font-size:31px}}
