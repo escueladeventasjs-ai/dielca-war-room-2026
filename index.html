@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DIELCA Commercial War Room 2026</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header class="hero">
+  <div>
+    <p class="eyebrow">JetSelling® Advanced Lab</p>
+    <h1>DIELCA Commercial War Room 2026</h1>
+    <p class="subtitle">Llegar antes · Salir de la subasta · Defender valor</p>
+  </div>
+  <div class="badge">Workshop Digital</div>
+</header>
+
+<main class="container">
+  <section class="panel">
+    <h2>1. Configuración del equipo</h2>
+    <div class="grid two">
+      <label>Nombre del equipo
+        <select id="teamName">
+          <option value="">Seleccionar equipo</option>
+          <option>Equipo Constructora</option>
+          <option>Equipo Instaladores</option>
+          <option>Equipo Industria</option>
+          <option>Equipo Ingeniería</option>
+        </select>
+      </label>
+      <label>Integrantes
+        <input id="teamMembers" placeholder="Nombres de los participantes"/>
+      </label>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title"><span>Dinámica 1</span><h2>Radar de Oportunidades</h2></div>
+    <p class="help">Objetivo: detectar oportunidades antes de que lleguen convertidas en petición de oferta.</p>
+    <label>Tipo de cliente seleccionado
+      <input id="clientType" placeholder="Constructora, instalador, industria, ingeniería..."/>
+    </label>
+    <label>Señales de oportunidad
+      <textarea id="signals" placeholder="Nueva obra, ampliación, retrasos de proveedor, licitación, proyecto fotovoltaico..."></textarea>
+    </label>
+    <label>Fuentes donde detectar esas señales
+      <textarea id="sources" placeholder="LinkedIn, clientes actuales, visitas a obra, prensa local, licitaciones, ingenierías..."></textarea>
+    </label>
+  </section>
+
+  <section class="panel">
+    <div class="section-title"><span>Dinámica 1</span><h2>Hipótesis Comercial JetSelling®</h2></div>
+    <p class="help">Construid una hipótesis que hable del cliente, no de DIELCA.</p>
+    <div class="grid two">
+      <label>1. Situación observada<textarea id="situation"></textarea></label>
+      <label>2. Riesgo posible<textarea id="risk"></textarea></label>
+      <label>3. Impacto probable<textarea id="impact"></textarea></label>
+      <label>4. Pregunta de apertura<textarea id="openingQuestion"></textarea></label>
+    </div>
+    <label>Apertura de conversación en 45 segundos
+      <textarea id="openingPitch" placeholder="Estamos viendo en empresas/proyectos similares que... Esto suele provocar... Por eso quería preguntarte..."></textarea>
+    </label>
+  </section>
+
+  <section class="panel">
+    <div class="section-title"><span>Dinámica 2</span><h2>El Tribunal del Precio</h2></div>
+    <p class="quote">Cliente: “La competencia me lo deja un 15% más barato. Si no igualas el precio, no seguimos.”</p>
+    <div class="grid two">
+      <label>1. Reconocer<textarea id="recognize" placeholder="Entiendo que el precio sea importante..."></textarea></label>
+      <label>2. Profundizar<textarea id="deepen" placeholder="Cuando dices caro, ¿a qué te refieres exactamente?"></textarea></label>
+      <label>3. Neutralizar<textarea id="neutralize" placeholder="Si resolvemos esta diferencia, ¿hay alguna otra razón que impediría avanzar?"></textarea></label>
+      <label>4. Resolver<textarea id="resolve" placeholder="Reencuadre, zoom, coste total, riesgo operativo, disponibilidad local, soporte..."></textarea></label>
+    </div>
+    <label>Compromiso concreto que buscaremos cerrar
+      <textarea id="commitment" placeholder="Próxima reunión, validación técnica, fecha de decisión, revisión conjunta, acceso al decisor..."></textarea>
+    </label>
+  </section>
+
+  <section class="panel">
+    <div class="section-title"><span>Jurado</span><h2>Rúbrica de evaluación</h2></div>
+    <div class="score-grid">
+      <label>Reconoce<input type="number" id="score1" min="0" max="10" value="0"/></label>
+      <label>Profundiza<input type="number" id="score2" min="0" max="10" value="0"/></label>
+      <label>Neutraliza<input type="number" id="score3" min="0" max="10" value="0"/></label>
+      <label>Reencuadra<input type="number" id="score4" min="0" max="10" value="0"/></label>
+      <label>Cierra<input type="number" id="score5" min="0" max="10" value="0"/></label>
+    </div>
+    <button onclick="calculateScore()">Calcular puntuación</button>
+    <h3 id="totalScore">Total: 0 / 50</h3>
+    <label>Observaciones del jurado<textarea id="juryNotes"></textarea></label>
+  </section>
+
+  <section class="panel">
+    <div class="section-title"><span>Cierre</span><h2>Plan de Acción Individual</h2></div>
+    <div class="grid two">
+      <label>Cliente real al que contactaré antes de que pida precio<textarea id="realClient"></textarea></label>
+      <label>Hipótesis que usaré<textarea id="realHypothesis"></textarea></label>
+      <label>Objeción probable<textarea id="probableObjection"></textarea></label>
+      <label>Compromiso que buscaré<textarea id="realCommitment"></textarea></label>
+    </div>
+  </section>
+
+  <section class="actions">
+    <button onclick="saveData()">Guardar progreso</button>
+    <button onclick="copySummary()">Copiar resumen</button>
+    <button onclick="downloadJSON()">Descargar respuestas</button>
+    <button onclick="clearData()" class="danger">Borrar</button>
+  </section>
+
+  <section class="panel output">
+    <h2>Resumen del equipo</h2>
+    <pre id="summary"></pre>
+  </section>
+</main>
+
+<footer>
+  <p>“Las grandes ventas no se cierran. Se construyen conversación a conversación.”</p>
+  <p>Gustavo Brito · JetSelling®</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
